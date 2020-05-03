@@ -113,6 +113,30 @@ export default function TaskList({
     event.dataTransfer.clearData();
   };
 
+  const onEmptyDrop = (event) => {
+    const updatedStages = { ...stages };
+    const draggedTask = JSON.parse(event.dataTransfer.getData('taskName'));
+    updatedStages[stageId].tasks.unshift(
+      stages[draggedTask.stageId].tasks[draggedTask.taskIndex],
+    );
+    updatedStages[draggedTask.stageId].tasks.splice(
+      draggedTask.taskIndex,
+      1,
+    );
+    updateStagesOrder(updatedStages);
+  }
+
+  if(list.length === 0) {
+    return (
+      <Styled.TaskListContainer>
+        <Styled.TaskListItem
+            onDragOver={event => onDragOver(event)}
+            onDrop={event => onEmptyDrop(event)}
+        >
+        </Styled.TaskListItem>
+      </Styled.TaskListContainer>
+    )
+  }
   return (
     <Styled.TaskListContainer>
       {list.map((data, key) => (
