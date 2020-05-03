@@ -78,7 +78,7 @@ export const TaskDescription = styled.p`
 export const TaskDetails = styled.div`
   display: inline-block;
   vertical-align: top;
-  width: calc(100% - 84px);
+  width: calc(100% - 56px);
 `;
 
 export const TaskActionsList = styled.div`

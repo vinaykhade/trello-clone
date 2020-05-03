@@ -174,8 +174,6 @@ export default function TaskList({
               <Styled.DragIcon>
                 <DragIndicatorIcon />
               </Styled.DragIcon>
-
-              <Styled.CheckCircle disabled={!data.active} />
               <Styled.TaskDetails>
                 <Styled.TaskDescription>
                   {data.description || ''}
